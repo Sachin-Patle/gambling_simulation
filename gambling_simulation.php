@@ -32,14 +32,48 @@ class GamblingSimulation                //Class declaration
         }
     }
 
-    
-    
-}
+    //Method to check win or loss after 50%
+    function resign_game()
+    {
+        //Declaring variables
+        $cash = self::STAKE;
+        $win=1;
+        $end=150;
+        $start=50;
+        $range=50;
+        $no_of_win=0;
+        $no_of_lose=0;
 
+        //Checking cash is greater than start and less than end or not
+        while( $cash < $end && $cash > $start)
+        {
+            if($win==$range)
+            {
+                $cash+=self::BET;       // if win matches to the range then cash will be incremented
+            }
+            else
+            {
+                $cash-=self::BET;       // if win not matches to the range then cash will be decremented
+            }
+        }
+        //Checking if collected cash is gerater than start cash then win or else loss
+        if($cash>=$start)
+        {
+            $no_of_win++;
+            echo "Win \n";
+        }
+        else
+        {
+            $no_of_lose--;
+            echo "Loss \n";
+        }
+    }
+}
+ 
 //Creating Object
 $gambling_simulator_object=new GamblingSimulation();
-//Calling Methods
 $gambling_simulator_object->welcome_mesage();
 $gambling_simulator_object->win_or_loss();
+$gambling_simulator_object->resign_game();
 
 ?>
