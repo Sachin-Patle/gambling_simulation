@@ -32,7 +32,7 @@ class GamblingSimulation                //Class declaration
         }
     }
 
-    //Method to check win or loss after 50%
+    //Methos to check win or loss after 50%
     function resign_game()
     {
         //Declaring variables
@@ -68,12 +68,34 @@ class GamblingSimulation                //Class declaration
             echo "Loss \n";
         }
     }
+
+    //Method for win amount for 20 days
+    function no_of_days()
+    {
+        $win=0;
+        $win_amount=0;
+        //Loop for number of days
+        for($day=1; $day < self::NO_OF_DAYS; $day++)
+        {
+
+            //Calculating win amount for number of days
+            while($day < self::NO_OF_DAYS)
+            {
+                $win_amount+=self::STAKE;
+                $day++;
+            }
+            echo $win_amount;
+        }
+    }
+    
 }
- 
-//Creating Object
+
+//Creating Objects
 $gambling_simulator_object=new GamblingSimulation();
+//Caling  Methods
 $gambling_simulator_object->welcome_mesage();
 $gambling_simulator_object->win_or_loss();
 $gambling_simulator_object->resign_game();
+$gambling_simulator_object->no_of_days();
 
 ?>
